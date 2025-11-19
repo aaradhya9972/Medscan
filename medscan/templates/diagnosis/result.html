@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagnosis Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+        .prediction {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #444;
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            background: #007BFF;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diagnosis Result</h1>
+
+        {% if file_url %}
+        <p><strong>Uploaded Image:</strong></p>
+            <img src="{{ file_url }}" alt="Uploaded Image">
+        {% else %}
+            <p>No image uploaded.</p>
+        {% endif %}
+
+        {% if prediction %}
+            <p class="prediction">Prediction: {{ prediction }}</p>
+        {% endif %}
+
+        <a href="{% url 'home' %}">Upload Another Image</a>
+    </div>
+</body>
+</html>
